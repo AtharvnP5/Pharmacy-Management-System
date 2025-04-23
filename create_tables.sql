@@ -25,7 +25,6 @@ CREATE TABLE Pharmacy(
     Name VARCHAR2(100) PRIMARY KEY,
     Phone_number VARCHAR2(15) NOT NULL,
     Address VARCHAR2(255)
-    
 );
 
 CREATE TABLE Treatment(
@@ -61,22 +60,19 @@ CREATE TABLE Pharmacy_Sales(
 
 CREATE TABLE Prescription(
     Patient INT,
-    Date DATE,
+    Date_ DATE,
     Doctor INT,
-    PRIMARY KEY (Patient, Date)
+    PRIMARY KEY (Patient, Date_)
 );
 
 CREATE TABLE Prescription_Drug(
     Patient INT,
-    Date DATE,
+    Date_ DATE,
     Company VARCHAR2(100),
     TradeName VARCHAR2(100),
     City VARCHAR2(100),
-    PRIMARY KEY (Patient, Date, Company, TradeName)
+    PRIMARY KEY (Patient, Date_, Company, TradeName)
 );
-
-ALTER TABLE Patient ADD CONSTRAINT fk_physician
-FOREIGN KEY (Primary_physician) REFERENCES Doctor(AadharID);
 
 ALTER TABLE Treatment ADD CONSTRAINT fk_patient
 FOREIGN KEY (Patient) REFERENCES Patient(AadharID);
@@ -106,9 +102,7 @@ ALTER TABLE Prescription ADD CONSTRAINT fk_doctor_prescription
 FOREIGN KEY (Doctor) REFERENCES Doctor(AadharID);
 
 ALTER TABLE Prescription_Drug ADD CONSTRAINT fk_prescription
-FOREIGN KEY (Patient, Date) REFERENCES Prescription(Patient, Date);
+FOREIGN KEY (Patient, Date_) REFERENCES Prescription(Patient, Date_);
 
 ALTER TABLE Prescription_Drug ADD CONSTRAINT fk_drug_prescription
 FOREIGN KEY (Company, TradeName) REFERENCES Drug(Company, TradeName);
-
-
