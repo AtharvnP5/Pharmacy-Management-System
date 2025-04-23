@@ -4,7 +4,7 @@ VALUES (101, 'Parth Joshi', '127 Shankar Bhavan', 22, NULL);
 INSERT INTO Patient (AadharID, Name, Address, Age, Primary_physician)
 VALUES (102, 'Atharv Patil', '161 Vishwakarma Bhavan', 20, NULL);
 INSERT INTO Patient (AadharID, Name, Address, Age, Primary_physician)
-VALUES (103, 'Atharva Deshkar', '121 Malviya Bhavan', 16, NULL);
+VALUES (103, 'Atharva Deshkar', '121 Vishwakarma Bhavan', 16, NULL);
 INSERT INTO Patient (AadharID, Name, Address, Age, Primary_physician)
 VALUES (104, 'Rujul Krishna', '51 Gandhi Bhavan', 19, NULL);
 
