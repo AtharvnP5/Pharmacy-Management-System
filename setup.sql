@@ -1,6 +1,8 @@
-connect C##test/"password";
+connect C##testing/"password";
+@drop_all_tables;
 @create_tables;
 @insert_data;
+@insert_data_more;
 set serveroutput on;
 @p1_general;
 @p2_prescription_report;

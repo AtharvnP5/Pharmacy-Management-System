@@ -29,6 +29,10 @@ UPDATE Patient
 SET Primary_physician = 201
 WHERE AadharID = 103;
 
+UPDATE Patient
+SET Primary_physician = 203
+WHERE AadharID = 104;
+
 -- Insert data into Pharma_company table
 INSERT INTO Pharma_company (Name, Phone_number)
 VALUES ('Emcure Pharma', '123-456-7890');
