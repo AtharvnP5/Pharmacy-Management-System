@@ -4,6 +4,7 @@ connect c##athar/"athar123";
 @insert_data;
 @insert_data_more;
 set serveroutput on;
+@print_tables;
 @p1_general;
 @p2_prescription_report;
 @p3_prescription_details;
