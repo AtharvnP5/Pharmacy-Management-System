@@ -1,3 +1,4 @@
+BEGIN
 DBMS_OUTPUT.PUT_LINE('--- Testing existing prescription for Patient 101 on 19-APR-2025 ---');
 EXEC Get_Prescription_Details(101, TO_DATE('19-04-2025', 'DD-MM-YYYY'));
 
