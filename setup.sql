@@ -1,4 +1,4 @@
-connect C##testing/"password";
+connect c##athar/"athar123";
 @drop_all_tables;
 @create_tables;
 @insert_data;

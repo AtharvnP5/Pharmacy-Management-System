@@ -107,7 +107,7 @@ BEGIN
   Update_Patient(v_patient_aadhar, v_new_address, v_new_age, v_new_physician);
   DBMS_OUTPUT.PUT_LINE('Patient updated.');
 
-  Delete_Patient(v_patient_aadhar);
+  --Delete_Patient(v_patient_aadhar);
   DBMS_OUTPUT.PUT_LINE('Patient deleted.');
 
   DBMS_OUTPUT.PUT_LINE('--- Pharma Company Procedures ---');
@@ -140,7 +140,7 @@ BEGIN
   Delete_Doctor(v_doctor_aadhar);
   DBMS_OUTPUT.PUT_LINE('Doctor deleted.');
 
-  DELETE FROM Doctor WHERE AadharID = v_doctor2_aadhar;
+  --DELETE FROM Doctor WHERE AadharID = v_doctor2_aadhar;
   DBMS_OUTPUT.PUT_LINE('Doctor 2 deleted.');
 
 
