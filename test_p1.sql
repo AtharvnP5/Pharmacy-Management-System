@@ -1,15 +1,15 @@
 -- Declare variables to use in the examples
 DECLARE
-  v_patient_aadhar INT := 289345678901;  --  Indian Aadhar format
+  v_patient_aadhar INT := 289345678901;  
   v_patient_name VARCHAR2(50) := 'Priya Sharma';
   v_patient_address VARCHAR2(100) := '10, MG Road, Bangalore, Karnataka, India';
   v_patient_age INT := 25;
-  v_patient_physician INT := 798234567801;  --  Doctor Aadhar
+  v_patient_physician INT := 798234567801;  
   v_new_address VARCHAR2(100) := '45, Indira Nagar, Bangalore, Karnataka, India';
   v_new_age INT := 28;
-  v_new_physician INT := 889900112233; --  Doctor Aadhar
+  v_new_physician INT := 889900112233; 
 
-  v_company_name VARCHAR2(50) := 'Patanjali';  -- Changed to Patanjali
+  v_company_name VARCHAR2(50) := 'Patanjali';  
   v_company_phone VARCHAR2(20) := '+91 1334 281100';
   v_new_phone VARCHAR2(20) := '+91 11 23457890';
   v_company_name2 VARCHAR2(50) := 'Pfizer';
@@ -34,9 +34,9 @@ DECLARE
   v_doctor2_years_exp INT := 10;
 
 
-  v_prescription_patient INT := 289345678901;  --  Patient Aadhar
+  v_prescription_patient INT := 289345678901;  
   v_prescription_date DATE := DATE '2024-01-15';
-  v_prescription_doctor INT := 798234567801;    -- Doctor Aadhar
+  v_prescription_doctor INT := 798234567801;    
   v_prescription_new_doctor INT := 889900112233;
 
   v_contract_pharma_company VARCHAR2(50) := 'Emcure Pharma';
