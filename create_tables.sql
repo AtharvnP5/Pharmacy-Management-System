@@ -1,15 +1,15 @@
 CREATE TABLE Patient(
     AadharID INT PRIMARY KEY,
-    Name VARCHAR2(100) NOT NULL,
-    Address VARCHAR2(255),
+    Name VARCHAR2( 25) NOT NULL,
+    Address VARCHAR2(25),
     Age INT NOT NULL,
     Primary_physician INT
 );
 
 CREATE TABLE Doctor(
     AadharID INT PRIMARY KEY,
-    Name VARCHAR2(100) NOT NULL,
-    Specialty VARCHAR2(100),
+    Name VARCHAR2( 25) NOT NULL,
+    Specialty VARCHAR2( 25),
     Years_of_Experience INT
 );
 
@@ -17,14 +17,14 @@ ALTER TABLE Patient ADD CONSTRAINT fk_physician
 FOREIGN KEY (Primary_physician) REFERENCES Doctor(AadharID);
 
 CREATE TABLE Pharma_company(
-    Name VARCHAR2(100) PRIMARY KEY,
+    Name VARCHAR2( 25) PRIMARY KEY,
     Phone_number VARCHAR2(15) NOT NULL
 );
 
 CREATE TABLE Pharmacy(
-    Name VARCHAR2(100) PRIMARY KEY,
+    Name VARCHAR2( 25) PRIMARY KEY,
     Phone_number VARCHAR2(15) NOT NULL,
-    Address VARCHAR2(255)
+    Address VARCHAR2(25)
 );
 
 CREATE TABLE Treatment(
@@ -34,26 +34,26 @@ CREATE TABLE Treatment(
 );
 
 CREATE TABLE Drug(
-    Company VARCHAR2(100),
-    TradeName VARCHAR2(100),
-    Formula VARCHAR2(100),
+    Company VARCHAR2( 25),
+    TradeName VARCHAR2( 25),
+    Formula VARCHAR2( 25),
     PRIMARY KEY (Company, TradeName)
 );
 
 CREATE TABLE Contract(
-    Pharma_company VARCHAR2(100),
-    Pharmacy VARCHAR2(100),
+    Pharma_company VARCHAR2( 25),
+    Pharmacy VARCHAR2( 25),
     Start_date DATE,
     End_date DATE,
-    Content VARCHAR2(255),
-    Supervisor VARCHAR2(100),
+    Content VARCHAR2(25),
+    Supervisor VARCHAR2( 25),
     PRIMARY KEY (Pharma_company, Pharmacy)
 );
 
 CREATE TABLE Pharmacy_Sales(
-    Company VARCHAR2(100),
-    TradeName VARCHAR2(100),
-    Pharmacy VARCHAR2(100),
+    Company VARCHAR2( 25),
+    TradeName VARCHAR2( 25),
+    Pharmacy VARCHAR2( 25),
     Price INT,
     PRIMARY KEY (Company, TradeName, Pharmacy)
 );
@@ -68,9 +68,9 @@ CREATE TABLE Prescription(
 CREATE TABLE Prescription_Drug(
     Patient INT,
     Date_ DATE,
-    Company VARCHAR2(100),
-    TradeName VARCHAR2(100),
-    City VARCHAR2(100),
+    Company VARCHAR2(25),
+    TradeName VARCHAR2(25),
+    City VARCHAR2( 25),
     PRIMARY KEY (Patient, Date_, Company, TradeName)
 );
 

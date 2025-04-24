@@ -1,0 +1,11 @@
+SET LINE 500;
+SELECT * FROM Prescription_Drug;
+SELECT * FROM Prescription  ;
+SELECT * FROM Pharmacy_Sales  ;
+SELECT * FROM Contract  ;
+SELECT * FROM Treatment  ;
+SELECT * FROM Drug  ;
+SELECT * FROM Pharmacy  ;
+SELECT * FROM Pharma_company  ;
+SELECT * FROM Patient  ;
+SELECT * FROM Doctor  ;
