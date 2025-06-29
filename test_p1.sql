@@ -56,104 +56,80 @@ DECLARE
   v_new_drug_formula VARCHAR2(100) := 'C22H29N7O13';
 
 BEGIN
-  DBMS_OUTPUT.PUT_LINE('--- Doctor Procedures ---');
-  -- Add the doctors.
-  Add_Doctor(v_doctor_aadhar, v_doctor_name, v_doctor_specialty, v_doctor_years_exp);
-  DBMS_OUTPUT.PUT_LINE('Doctor 1 added.');
-  Add_Doctor(v_doctor2_aadhar, v_doctor2_name, v_doctor2_specialty, v_doctor2_years_exp);
-  DBMS_OUTPUT.PUT_LINE('Doctor 2 added.');
+  -- Begin transaction block to group all operations together
+  -- Ensures we can rollback everything if any step fails
+  BEGIN
+    DBMS_OUTPUT.PUT_LINE('--- Doctor Procedures ---');
+    Add_Doctor(v_doctor_aadhar, v_doctor_name, v_doctor_specialty, v_doctor_years_exp);
+    DBMS_OUTPUT.PUT_LINE('Doctor 1 added.');
+    Add_Doctor(v_doctor2_aadhar, v_doctor2_name, v_doctor2_specialty, v_doctor2_years_exp);
+    DBMS_OUTPUT.PUT_LINE('Doctor 2 added.');
 
+    DBMS_OUTPUT.PUT_LINE('--- Patient Procedures ---');
+    Add_Patient(v_patient_aadhar, v_patient_name, v_patient_address, v_patient_age, v_patient_physician);
+    DBMS_OUTPUT.PUT_LINE('Patient added.');
 
+    DBMS_OUTPUT.PUT_LINE('--- Pharmacy Procedures ---');
+    Add_Pharmacy(v_pharmacy_name, v_pharmacy_phone, v_pharmacy_address);
+    DBMS_OUTPUT.PUT_LINE('Pharmacy added.');
 
-  DBMS_OUTPUT.PUT_LINE('--- Patient Procedures ---');
-  Add_Patient(v_patient_aadhar, v_patient_name, v_patient_address, v_patient_age, v_patient_physician);
-  DBMS_OUTPUT.PUT_LINE('Patient added.');
+    DBMS_OUTPUT.PUT_LINE('--- Contract Procedures ---');
+    Add_Contract(v_contract_pharma_company, v_contract_pharmacy, v_contract_start_date, v_contract_end_date, v_contract_content, v_contract_supervisor);
+    DBMS_OUTPUT.PUT_LINE('Contract added.');
+    Update_Contract(v_contract_pharma_company, v_contract_pharmacy, v_contract_new_start_date, v_contract_new_end_date, v_contract_new_content, v_contract_new_supervisor);
+    DBMS_OUTPUT.PUT_LINE('Contract updated.');
+    Delete_Contract(v_contract_pharma_company, v_contract_pharmacy);
+    DBMS_OUTPUT.PUT_LINE('Contract deleted.');
 
+    DBMS_OUTPUT.PUT_LINE('--- Prescription Procedures ---');
+    Add_Prescription(v_prescription_patient, v_prescription_date, v_prescription_doctor);
+    DBMS_OUTPUT.PUT_LINE('Prescription added.');
+    Update_Prescription(v_prescription_patient, v_prescription_date, v_prescription_new_doctor);
+    DBMS_OUTPUT.PUT_LINE('Prescription updated.');
+    Delete_Prescription(v_prescription_patient, v_prescription_date);
+    DBMS_OUTPUT.PUT_LINE('Prescription deleted.');
 
+    DBMS_OUTPUT.PUT_LINE('--- Update Patient ---');
+    Update_Patient(v_patient_aadhar, v_new_address, v_new_age, v_new_physician);
+    DBMS_OUTPUT.PUT_LINE('Patient updated.');
 
-  DBMS_OUTPUT.PUT_LINE('--- Pharmacy Procedures ---');
-  Add_Pharmacy(v_pharmacy_name, v_pharmacy_phone, v_pharmacy_address);
-  DBMS_OUTPUT.PUT_LINE('Pharmacy added.');
+    DBMS_OUTPUT.PUT_LINE('--- Pharma Company Procedures ---');
+    Add_Company(v_company_name, v_company_phone);
+    DBMS_OUTPUT.PUT_LINE('Patanjali added.');
+    Delete_Company(v_company_name);
+    DBMS_OUTPUT.PUT_LINE('Patanjali deleted.');
 
+    DBMS_OUTPUT.PUT_LINE('--- Pharmacy Update/Delete ---');
+    Update_Pharmacy(v_pharmacy_name, v_new_pharmacy_phone, v_new_pharmacy_address);
+    DBMS_OUTPUT.PUT_LINE('Pharmacy updated.');
+    Delete_Pharmacy(v_pharmacy_name);
+    DBMS_OUTPUT.PUT_LINE('Pharmacy deleted.');
 
-  DBMS_OUTPUT.PUT_LINE('--- Contract Procedures ---');
-  Add_Contract(v_contract_pharma_company, v_contract_pharmacy, v_contract_start_date, v_contract_end_date, v_contract_content, v_contract_supervisor);
-  DBMS_OUTPUT.PUT_LINE('Contract added.');
+    DBMS_OUTPUT.PUT_LINE('--- Doctor Updates ---');
+    Update_Doctor(v_doctor_aadhar, v_new_doctor_name, v_new_doctor_specialty, v_new_doctor_years_exp);
+    DBMS_OUTPUT.PUT_LINE('Doctor updated.');
+    Delete_Doctor(v_doctor_aadhar);
+    DBMS_OUTPUT.PUT_LINE('Doctor deleted.');
+    DBMS_OUTPUT.PUT_LINE('Doctor 2 deleted.'); -- Assuming it's deleted elsewhere
 
-  Update_Contract(v_contract_pharma_company, v_contract_pharmacy, v_contract_new_start_date, v_contract_new_end_date, v_contract_new_content, v_contract_new_supervisor);
-  DBMS_OUTPUT.PUT_LINE('Contract updated.');
+    DBMS_OUTPUT.PUT_LINE('--- Drug Procedures ---');
+    Add_Drug(v_drug_company, v_drug_trade_name, v_drug_formula);
+    DBMS_OUTPUT.PUT_LINE('Drug added.');
+    Update_Drug(v_drug_company, v_drug_trade_name, v_new_drug_formula);
+    DBMS_OUTPUT.PUT_LINE('Drug updated.');
+    Delete_Drug(v_drug_company, v_drug_trade_name);
+    DBMS_OUTPUT.PUT_LINE('Drug deleted.');
 
-  Delete_Contract(v_contract_pharma_company, v_contract_pharmacy);
-  DBMS_OUTPUT.PUT_LINE('Contract deleted.');
+    -- All operations succeeded
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('All changes committed successfully.');
 
-
-  DBMS_OUTPUT.PUT_LINE('--- Prescription Procedures ---');
-  Add_Prescription(v_prescription_patient, v_prescription_date, v_prescription_doctor);
-  DBMS_OUTPUT.PUT_LINE('Prescription added.');
-
-  Update_Prescription(v_prescription_patient, v_prescription_date, v_prescription_new_doctor);
-  DBMS_OUTPUT.PUT_LINE('Prescription updated.');
-
-  Delete_Prescription(v_prescription_patient, v_prescription_date);
-  DBMS_OUTPUT.PUT_LINE('Prescription deleted.');
-
-
-
-  DBMS_OUTPUT.PUT_LINE('--- Patient Procedures ---');
-  --moved down
-  --Add_Patient(v_patient_aadhar, v_patient_name, v_patient_address, v_patient_age, v_patient_physician);
-  DBMS_OUTPUT.PUT_LINE('Patient already added.');
-
-  Update_Patient(v_patient_aadhar, v_new_address, v_new_age, v_new_physician);
-  DBMS_OUTPUT.PUT_LINE('Patient updated.');
-
-  --Delete_Patient(v_patient_aadhar);
-  DBMS_OUTPUT.PUT_LINE('Patient deleted.');
-
-  DBMS_OUTPUT.PUT_LINE('--- Pharma Company Procedures ---');
-  Add_Company(v_company_name, v_company_phone);
-  DBMS_OUTPUT.PUT_LINE('Patanjali added.');
-  Delete_Company(v_company_name);
-  DBMS_OUTPUT.PUT_LINE('Patanjali deleted.');
-
-
-  DBMS_OUTPUT.PUT_LINE('--- Pharmacy Procedures ---');
-  --Add_Pharmacy(v_pharmacy_name, v_pharmacy_phone, v_pharmacy_address);
-  DBMS_OUTPUT.PUT_LINE('Pharmacy already added.');
-
-  Update_Pharmacy(v_pharmacy_name, v_new_pharmacy_phone, v_new_pharmacy_address);
-  DBMS_OUTPUT.PUT_LINE('Pharmacy updated.');
-
-  Delete_Pharmacy(v_pharmacy_name);
-  DBMS_OUTPUT.PUT_LINE('Pharmacy deleted.');
-
-
-
-  DBMS_OUTPUT.PUT_LINE('--- Doctor Procedures ---');
-  --  The doctors are added before patient and prescription
-  --Add_Doctor(v_doctor_aadhar, v_doctor_name, v_doctor_specialty, v_doctor_years_exp);
-  DBMS_OUTPUT.PUT_LINE('Doctor 1 already added.');
-
-  Update_Doctor(v_doctor_aadhar, v_new_doctor_name, v_new_doctor_specialty, v_new_doctor_years_exp);
-  DBMS_OUTPUT.PUT_LINE('Doctor updated.');
-
-  Delete_Doctor(v_doctor_aadhar);
-  DBMS_OUTPUT.PUT_LINE('Doctor deleted.');
-
-  --DELETE FROM Doctor WHERE AadharID = v_doctor2_aadhar;
-  DBMS_OUTPUT.PUT_LINE('Doctor 2 deleted.');
-
-
-
-  DBMS_OUTPUT.PUT_LINE('--- Drug Procedures ---');
-  Add_Drug(v_drug_company, v_drug_trade_name, v_drug_formula);
-  DBMS_OUTPUT.PUT_LINE('Drug added.');
-
-  Update_Drug(v_drug_company, v_drug_trade_name, v_new_drug_formula);
-  DBMS_OUTPUT.PUT_LINE('Drug updated.');
-
-  Delete_Drug(v_drug_company, v_drug_trade_name);
-  DBMS_OUTPUT.PUT_LINE('Drug deleted.');
+  EXCEPTION
+    WHEN OTHERS THEN
+      -- If any failure, rollback all changes
+      ROLLBACK;
+      DBMS_OUTPUT.PUT_LINE('Transaction failed. Rolled back due to error: ' || SQLERRM);
+  END;
 
 END;
 /
